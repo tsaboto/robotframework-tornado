@@ -1,0 +1,6 @@
+#!/bin/bash
+python3 servico.py &
+
+cd features/
+
+robot -d results api.robot

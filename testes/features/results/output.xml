@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180427 09:22:48.656" generator="Robot 3.0.1 (Python 3.5.2 on linux)">
+<suite id="s1" source="/home/CIT/tsaboto/PycharmProjects/DesafioPython/testes/features/api.robot" name="Api">
+<test id="s1-t1" name="1. Cenário: Enviar nome do arquivo TipoExercicio e conteudo Abdominal para API via POST">
+<kw library="keywords_api" name="Dado que conect na API">
+<kw library="RequestsLibrary" name="Create Session">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>api</arg>
+<arg>${host}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.003">Creating Session using : alias=api, url=http://localhost:8888/content, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180427 09:22:49.004" starttime="20180427 09:22:49.003"></status>
+</kw>
+<status status="PASS" endtime="20180427 09:22:49.004" starttime="20180427 09:22:49.002"></status>
+</kw>
+<kw library="keywords_api" name="Quando informar o nome do arquivo &quot;TipoExercicio&quot;, conteudo &quot;Abdominal&quot;">
+<kw library="RequestsLibrary" name="Post Request">
+<doc>Send a POST request on the session object found using the</doc>
+<arguments>
+<arg>api</arg>
+<arg>${nome_arquivo}</arg>
+<arg>${conteudo}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg level="INFO" timestamp="20180427 09:22:49.019">Post Request using : alias=api, uri=TipoExercicio, data=&lt;empty&gt;, headers=None, files=None, allow_redirects=True </msg>
+<msg level="INFO" timestamp="20180427 09:22:49.019">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.019" starttime="20180427 09:22:49.006"></status>
+</kw>
+<kw library="BuiltIn" name="Set Test Variable">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.020">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.020" starttime="20180427 09:22:49.019"></status>
+</kw>
+<status status="PASS" endtime="20180427 09:22:49.021" starttime="20180427 09:22:49.005"></status>
+</kw>
+<kw library="keywords_api" name="Então é apresentado o status &quot;200&quot; e mensagem &quot;Mensagem criada com sucesso&quot;">
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.text}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.023">Mensagem criada com sucesso</msg>
+<status status="PASS" endtime="20180427 09:22:49.024" starttime="20180427 09:22:49.022"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.025">&lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.025" starttime="20180427 09:22:49.024"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>${retorno_json}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.026">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.027" starttime="20180427 09:22:49.025"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.text}</arg>
+<arg>${mensagem}</arg>
+</arguments>
+<status status="PASS" endtime="20180427 09:22:49.028" starttime="20180427 09:22:49.027"></status>
+</kw>
+<status status="PASS" endtime="20180427 09:22:49.029" starttime="20180427 09:22:49.021"></status>
+</kw>
+<tags>
+<tag>post_qrquivo_valido</tag>
+</tags>
+<status status="PASS" critical="yes" endtime="20180427 09:22:49.029" starttime="20180427 09:22:49.001"></status>
+</test>
+<test id="s1-t2" name="2. Cenário: Enviar nome do arquivo sem conteudo">
+<kw library="keywords_api" name="Dado que conect na API">
+<kw library="RequestsLibrary" name="Create Session">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>api</arg>
+<arg>${host}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.034">Creating Session using : alias=api, url=http://localhost:8888/content, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180427 09:22:49.035" starttime="20180427 09:22:49.034"></status>
+</kw>
+<status status="PASS" endtime="20180427 09:22:49.035" starttime="20180427 09:22:49.033"></status>
+</kw>
+<kw library="keywords_api" name="Quando informar o nome do arquivo &quot;TipoExercicio&quot; sem conteudo">
+<kw library="RequestsLibrary" name="Post Request">
+<doc>Send a POST request on the session object found using the</doc>
+<arguments>
+<arg>api</arg>
+<arg>${nome_arquivo}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg level="INFO" timestamp="20180427 09:22:49.066">Post Request using : alias=api, uri=TipoExercicio, data=&lt;empty&gt;, headers=None, files=None, allow_redirects=True </msg>
+<msg level="INFO" timestamp="20180427 09:22:49.066">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.066" starttime="20180427 09:22:49.037"></status>
+</kw>
+<kw library="BuiltIn" name="Set Test Variable">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.067">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.067" starttime="20180427 09:22:49.066"></status>
+</kw>
+<status status="PASS" endtime="20180427 09:22:49.067" starttime="20180427 09:22:49.036"></status>
+</kw>
+<kw library="keywords_api" name="Então é apresentado o status &quot;400&quot; e mensagem &quot;Aquivo sem conteudo&quot;">
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.text}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.068">Aquivo sem conteudo</msg>
+<status status="PASS" endtime="20180427 09:22:49.068" starttime="20180427 09:22:49.067"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.068">&lt;Response [400]&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.068" starttime="20180427 09:22:49.068"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>${retorno_json}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.069">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.069" starttime="20180427 09:22:49.068"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.text}</arg>
+<arg>${mensagem}</arg>
+</arguments>
+<status status="PASS" endtime="20180427 09:22:49.069" starttime="20180427 09:22:49.069"></status>
+</kw>
+<status status="PASS" endtime="20180427 09:22:49.070" starttime="20180427 09:22:49.067"></status>
+</kw>
+<tags>
+<tag>post_arquivo_sem_coteudo</tag>
+</tags>
+<status status="PASS" critical="yes" endtime="20180427 09:22:49.070" starttime="20180427 09:22:49.031"></status>
+</test>
+<test id="s1-t3" name="3. Cenário: Ler aquivo existente">
+<kw library="keywords_api" name="Dado que conect na API">
+<kw library="RequestsLibrary" name="Create Session">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>api</arg>
+<arg>${host}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.072">Creating Session using : alias=api, url=http://localhost:8888/content, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180427 09:22:49.073" starttime="20180427 09:22:49.072"></status>
+</kw>
+<status status="PASS" endtime="20180427 09:22:49.073" starttime="20180427 09:22:49.071"></status>
+</kw>
+<kw library="keywords_api" name="Quando eu informar o nome do arquivo &quot;TipoExercicio&quot;">
+<kw library="RequestsLibrary" name="Get Request">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>api</arg>
+<arg>${nome_arquivo}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg level="INFO" timestamp="20180427 09:22:49.077">Get Request using : alias=api, uri=TipoExercicio, headers=None json=None</msg>
+<msg level="INFO" timestamp="20180427 09:22:49.078">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.078" starttime="20180427 09:22:49.073"></status>
+</kw>
+<kw library="BuiltIn" name="Set Test Variable">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.078">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.078" starttime="20180427 09:22:49.078"></status>
+</kw>
+<status status="PASS" endtime="20180427 09:22:49.079" starttime="20180427 09:22:49.073"></status>
+</kw>
+<kw library="keywords_api" name="Então é apresentado o status &quot;200&quot; e mensagem &quot;Abdominal&quot;">
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.text}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.080">Abdominal</msg>
+<status status="PASS" endtime="20180427 09:22:49.080" starttime="20180427 09:22:49.079"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.080">&lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.081" starttime="20180427 09:22:49.080"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>${retorno_json}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.081">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.082" starttime="20180427 09:22:49.081"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.text}</arg>
+<arg>${mensagem}</arg>
+</arguments>
+<status status="PASS" endtime="20180427 09:22:49.082" starttime="20180427 09:22:49.082"></status>
+</kw>
+<status status="PASS" endtime="20180427 09:22:49.082" starttime="20180427 09:22:49.079"></status>
+</kw>
+<tags>
+<tag>ler_arquivo_existente</tag>
+</tags>
+<status status="PASS" critical="yes" endtime="20180427 09:22:49.082" starttime="20180427 09:22:49.070"></status>
+</test>
+<test id="s1-t4" name="4. Cenário: Ler arquivo inexistente">
+<kw library="keywords_api" name="Dado que conect na API">
+<kw library="RequestsLibrary" name="Create Session">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>api</arg>
+<arg>${host}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.084">Creating Session using : alias=api, url=http://localhost:8888/content, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180427 09:22:49.084" starttime="20180427 09:22:49.084"></status>
+</kw>
+<status status="PASS" endtime="20180427 09:22:49.084" starttime="20180427 09:22:49.083"></status>
+</kw>
+<kw library="keywords_api" name="Quando eu informar o nome do arquivo &quot;NaoExistente&quot;">
+<kw library="RequestsLibrary" name="Get Request">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>api</arg>
+<arg>${nome_arquivo}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg level="INFO" timestamp="20180427 09:22:49.091">Get Request using : alias=api, uri=NaoExistente, headers=None json=None</msg>
+<msg level="INFO" timestamp="20180427 09:22:49.092">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.092" starttime="20180427 09:22:49.085"></status>
+</kw>
+<kw library="BuiltIn" name="Set Test Variable">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.093">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.093" starttime="20180427 09:22:49.092"></status>
+</kw>
+<status status="PASS" endtime="20180427 09:22:49.093" starttime="20180427 09:22:49.085"></status>
+</kw>
+<kw library="keywords_api" name="Então é apresentado o status &quot;404&quot; e mensagem &quot;Arquivo não existente&quot;">
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.text}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.095">Arquivo não existente</msg>
+<status status="PASS" endtime="20180427 09:22:49.095" starttime="20180427 09:22:49.095"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.096">&lt;Response [404]&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.096" starttime="20180427 09:22:49.095"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>${retorno_json}</arg>
+</arguments>
+<msg level="INFO" timestamp="20180427 09:22:49.096">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20180427 09:22:49.097" starttime="20180427 09:22:49.096"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.text}</arg>
+<arg>${mensagem}</arg>
+</arguments>
+<status status="PASS" endtime="20180427 09:22:49.097" starttime="20180427 09:22:49.097"></status>
+</kw>
+<status status="PASS" endtime="20180427 09:22:49.097" starttime="20180427 09:22:49.094"></status>
+</kw>
+<tags>
+<tag>ler_arquivo_inexistente</tag>
+</tags>
+<status status="PASS" critical="yes" endtime="20180427 09:22:49.098" starttime="20180427 09:22:49.083"></status>
+</test>
+<doc>Teste da API criado com o tornad</doc>
+<status status="PASS" endtime="20180427 09:22:49.098" starttime="20180427 09:22:48.656"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="4">Critical Tests</stat>
+<stat fail="0" pass="4">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">ler_arquivo_existente</stat>
+<stat fail="0" pass="1">ler_arquivo_inexistente</stat>
+<stat fail="0" pass="1">post_arquivo_sem_coteudo</stat>
+<stat fail="0" pass="1">post_qrquivo_valido</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Api" pass="4">Api</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

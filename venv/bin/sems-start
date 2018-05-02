@@ -1,0 +1,5 @@
+#!/home/CIT/tsaboto/PycharmProjects/DesafioPython/venv/bin/python
+
+from sems import server
+server.start()
+
